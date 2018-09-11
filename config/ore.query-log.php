@@ -117,10 +117,10 @@ return [
     | Minium excecution time
     |--------------------------------------------------------------------------
     |
-    | Time (seconds) to reach ncessary to flag the query as critical
+    | Time (milliseconds) to reach necessary to flag the query as critical
     |
     */
-    'min_time' => 3,
+    'min_time' => 3000,
 
     /*
     |--------------------------------------------------------------------------
