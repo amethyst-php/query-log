@@ -120,7 +120,7 @@ return [
     | Time (milliseconds) to reach necessary to flag the query as critical
     |
     */
-    'min_time' => 3000,
+    'min_time' => 10,
 
     /*
     |--------------------------------------------------------------------------
