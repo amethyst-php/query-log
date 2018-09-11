@@ -7,6 +7,9 @@ use Railken\Laravel\Manager\Contracts\AgentContract;
 use Railken\Laravel\Manager\ModelManager;
 use Railken\Laravel\Manager\Tokens;
 
+/**
+ * @method \Railken\LaraOre\QueryLog\QueryLogRepository getRepository()
+ */
 class QueryLogManager extends ModelManager
 {
     /**

@@ -14,7 +14,18 @@ class QueryLog extends Model implements EntityContract
      * @var array
      */
     protected $fillable = [
-        'name', 'sql', 'time', 'group',
+        'sql',
+        'time',
+        'group',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'sql'     => 'object',
     ];
 
     /**

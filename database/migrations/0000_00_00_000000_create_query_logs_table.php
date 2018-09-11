@@ -16,7 +16,7 @@ class CreateQueryLogsTable extends Migration
             $table->increments('id');
             $table->text('sql');
             $table->float('time');
-            $table->integer('group');
+            $table->string('group');
             $table->timestamps();
             $table->softDeletes();
         });

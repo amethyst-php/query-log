@@ -4,9 +4,12 @@ namespace Railken\LaraOre;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Railken\LaraOre\Api\Support\Router;
 use Railken\LaraOre\QueryLog\QueryLogManager;
+use Railken\LaraOre\Services\QueryLogger;
 
 class QueryLogServiceProvider extends ServiceProvider
 {
@@ -23,6 +26,18 @@ class QueryLogServiceProvider extends ServiceProvider
         config(['ore.managers' => array_merge(Config::get('ore.managers', []), [
             QueryLogManager::class,
         ])]);
+
+        $this->app->get('ore.query-logger')->boot();
+
+        if (Schema::hasTable(Config::get('ore.query-log.table'))) {
+            Event::listen(\Illuminate\Database\Events\QueryExecuted::class, function ($event) {
+                $this->app->get('ore.query-logger')->handleEvent($event);
+            });
+
+            $this->app->terminating(function () {
+                $this->app->get('ore.query-logger')->terminate();
+            });
+        }
     }
 
     /**
@@ -32,6 +47,7 @@ class QueryLogServiceProvider extends ServiceProvider
     {
         $this->app->register(\Railken\Laravel\Manager\ManagerServiceProvider::class);
         $this->app->register(\Railken\LaraOre\ApiServiceProvider::class);
+        $this->app->singleton('ore.query-logger', QueryLogger::class);
         $this->mergeConfigFrom(__DIR__.'/../config/ore.query-log.php', 'ore.query-log');
     }
 

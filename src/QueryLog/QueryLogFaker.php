@@ -22,7 +22,7 @@ class QueryLogFaker extends BaseFaker
 
         $bag = new Bag();
         $bag->set('sql', 'SELECT * FROM foo');
-        $bag->set('time', 0.003);
+        $bag->set('time', 0.23);
         $bag->set('group', 1);
 
         return $bag;

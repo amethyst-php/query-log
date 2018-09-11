@@ -5,7 +5,6 @@ namespace Railken\LaraOre\QueryLog\Attributes\Group;
 use Railken\Laravel\Manager\Attributes\BaseAttribute;
 use Railken\Laravel\Manager\Contracts\EntityContract;
 use Railken\Laravel\Manager\Tokens;
-use Respect\Validation\Validator as v;
 
 class GroupAttribute extends BaseAttribute
 {
@@ -74,6 +73,6 @@ class GroupAttribute extends BaseAttribute
      */
     public function valid(EntityContract $entity, $value)
     {
-        return v::intVal()->validate($value);
+        return true;
     }
 }
