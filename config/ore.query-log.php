@@ -131,4 +131,14 @@ return [
     |
     */
     'min_queries' => 30,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Max age
+    |--------------------------------------------------------------------------
+    |
+    | Define the number of days to determinate the max age of a log before deletion
+    |
+    */
+    'max_age' => 10,
 ];

@@ -69,7 +69,6 @@ class QueryLogger
         if (count($this->queryLogs) < Config::get('ore.query-log.min_queries')) {
             return;
         }
-
         $params = [
             'time'  => 0,
             'sql'   => [],
@@ -78,7 +77,7 @@ class QueryLogger
 
         foreach ($this->queryLogs as $query) {
             $params['time'] += $query->time;
-            $params['sql'][] = $query->sql;
+            $params['sql'][] = ['sql' => $query->sql, 'time' => $query->time];
         }
 
         $manager->create($params);

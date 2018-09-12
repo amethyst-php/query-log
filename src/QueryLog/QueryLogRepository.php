@@ -19,4 +19,16 @@ class QueryLogRepository extends ModelRepository
 
         return $group;
     }
+
+    /**
+     * Delete logs older than the days defined by the param.
+     *
+     * @param int $max_age
+     */
+    public function deleteOldLogs(int $max_age)
+    {
+        $max_date = (new \DateTime())->modify("-{$max_age} days");
+
+        $this->newQuery()->where('created_at', '<', $max_date)->delete();
+    }
 }

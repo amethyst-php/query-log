@@ -2,12 +2,14 @@
 
 namespace Railken\LaraOre;
 
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Railken\LaraOre\Api\Support\Router;
+use Railken\LaraOre\Console\Commands\QueryLogCleanCommand;
 use Railken\LaraOre\QueryLog\QueryLogManager;
 use Railken\LaraOre\Services\QueryLogger;
 
@@ -22,6 +24,7 @@ class QueryLogServiceProvider extends ServiceProvider
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->loadRoutes();
+        $this->commands([QueryLogCleanCommand::class]);
 
         config(['ore.managers' => array_merge(Config::get('ore.managers', []), [
             QueryLogManager::class,
@@ -37,6 +40,9 @@ class QueryLogServiceProvider extends ServiceProvider
             $this->app->terminating(function () {
                 $this->app->get('ore.query-logger')->terminate();
             });
+
+            $schedule = $this->app->make(Schedule::class);
+            $schedule->command('ore:query-log:clean')->daily();
         }
     }
 
