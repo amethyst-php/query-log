@@ -1,8 +1,8 @@
-# lara-ore-query-log
+# amethyst-query-log
 
-[![Build Status](https://travis-ci.org/railken/lara-ore-query-log.svg?branch=master)](https://travis-ci.org/railken/lara-ore-query-log)
+[![Build Status](https://travis-ci.org/railken/amethyst-query-log.svg?branch=master)](https://travis-ci.org/railken/amethyst-query-log)
 
-This is a lara-ore package.
+[Amethyst](https://github.com/railken/amethyst) package.
 
 # Requirements
 
@@ -13,7 +13,7 @@ PHP 7.1 and later.
 You can install it via [Composer](https://getcomposer.org/) by typing the following command:
 
 ```bash
-composer require railken/lara-ore-query-log
+composer require railken/amethyst-query-log
 ```
 
 The package will automatically register itself.

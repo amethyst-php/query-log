@@ -1,12 +1,12 @@
 <?php
 
-namespace Railken\LaraOre\Http\Controllers\Admin;
+namespace Railken\Amethyst\Http\Controllers\Admin;
 
-use Illuminate\Support\Facades\Config;
-use Railken\LaraOre\Api\Http\Controllers\RestConfigurableController;
-use Railken\LaraOre\Api\Http\Controllers\Traits as RestTraits;
+use Railken\Amethyst\Api\Http\Controllers\RestManagerController;
+use Railken\Amethyst\Api\Http\Controllers\Traits as RestTraits;
+use Railken\Amethyst\Managers\QueryLogManager;
 
-class QueryLogsController extends RestConfigurableController
+class QueryLogsController extends RestManagerController
 {
     use RestTraits\RestIndexTrait;
     use RestTraits\RestShowTrait;
@@ -15,34 +15,9 @@ class QueryLogsController extends RestConfigurableController
     use RestTraits\RestRemoveTrait;
 
     /**
-     * The config path.
+     * The class of the manager.
      *
      * @var string
      */
-    public $config = 'ore.query-log';
-
-    /**
-     * The attributes that are queryable.
-     *
-     * @var array
-     */
-    public $queryable = [
-        'id',
-        'sql',
-        'time',
-        'group',
-        'created_at',
-        'updated_at',
-    ];
-
-    /**
-     * The attributes that are fillable.
-     *
-     * @var array
-     */
-    public $fillable = [
-        'sql',
-        'time',
-        'group',
-    ];
+    public $class = QueryLogManager::class;
 }

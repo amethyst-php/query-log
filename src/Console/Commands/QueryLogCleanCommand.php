@@ -1,10 +1,10 @@
 <?php
 
-namespace Railken\LaraOre\Console\Commands;
+namespace Railken\Amethyst\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Config;
-use Railken\LaraOre\QueryLog\QueryLogManager;
+use Railken\Amethyst\Managers\QueryLogManager;
 
 class QueryLogCleanCommand extends Command
 {
@@ -13,7 +13,7 @@ class QueryLogCleanCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'ore:query-log:clean';
+    protected $signature = 'amethyst:query-log:clean';
 
     /**
      * The console command description.
@@ -30,6 +30,6 @@ class QueryLogCleanCommand extends Command
     public function handle()
     {
         $m = new QueryLogManager();
-        $m->getRepository()->deleteOldLogs(intval(Config::get('ore.query-log.max_age')));
+        $m->getRepository()->deleteOldLogs(intval(Config::get('amethyst.query-log.max_age')));
     }
 }

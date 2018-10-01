@@ -1,9 +1,9 @@
 <?php
 
-namespace Railken\LaraOre\Services;
+namespace Railken\Amethyst\Services;
 
 use Illuminate\Support\Facades\Config;
-use Railken\LaraOre\QueryLog\QueryLogManager;
+use Railken\Amethyst\Managers\QueryLogManager;
 
 class QueryLogger
 {
@@ -36,7 +36,7 @@ class QueryLogger
             return;
         }
 
-        if ($event->time < Config::get('ore.query-log.min_time')) {
+        if ($event->time < Config::get('amethyst.query-log.min_time')) {
             return;
         }
 
@@ -66,7 +66,7 @@ class QueryLogger
 
         $manager = new QueryLogManager();
 
-        if (count($this->queryLogs) < Config::get('ore.query-log.min_queries')) {
+        if (count($this->queryLogs) < Config::get('amethyst.query-log.min_queries')) {
             return;
         }
         $params = [
