@@ -12,7 +12,7 @@ class CreateQueryLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create(Config::get('amethyst.query-log.managers.query-log.table'), function (Blueprint $table) {
+        Schema::create(Config::get('amethyst.query-log.data.query-log.table'), function (Blueprint $table) {
             $table->increments('id');
             $table->text('sql');
             $table->float('time');
@@ -26,6 +26,6 @@ class CreateQueryLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(Config::get('amethyst.query-log.managers.query-log.table'));
+        Schema::dropIfExists(Config::get('amethyst.query-log.data.query-log.table'));
     }
 }

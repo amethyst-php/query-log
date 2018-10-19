@@ -23,7 +23,7 @@ class QueryLogServiceProvider extends CommonServiceProvider
 
         $this->app->get('amethyst.query-logger')->boot();
 
-        if (Schema::hasTable(Config::get('ore.query-log.managers.query-log.table'))) {
+        if (Schema::hasTable(Config::get('ore.query-log.data.query-log.table'))) {
             Event::listen(\Illuminate\Database\Events\QueryExecuted::class, function ($event) {
                 $this->app->get('amethyst.query-logger')->handleEvent($event);
             });

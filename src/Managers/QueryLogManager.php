@@ -2,23 +2,15 @@
 
 namespace Railken\Amethyst\Managers;
 
-use Illuminate\Support\Facades\Config;
+use Railken\Amethyst\Common\ConfigurableManager;
 use Railken\Lem\Manager;
 
 class QueryLogManager extends Manager
 {
-    /**
-     * Describe this manager.
-     *
-     * @var string
-     */
-    public $comment = '...';
+    use ConfigurableManager;
 
     /**
-     * Register Classes.
+     * @var string
      */
-    public function registerClasses()
-    {
-        return Config::get('amethyst.query-log.managers.query-log');
-    }
+    protected $config = 'amethyst.query-log.data.query-log';
 }
