@@ -17,7 +17,7 @@ class LoggerTest extends BaseTest
         $manager->getRepository()->newQuery()->where('id', 1)->get();
 
         $this->assertEquals(1, 1);
-        
+
         $this->app->terminate();
     }
 }

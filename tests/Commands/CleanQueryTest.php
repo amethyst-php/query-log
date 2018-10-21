@@ -10,7 +10,6 @@ class CleanQueryTest extends BaseTest
 {
     public function testCommand()
     {
-        
         // Create a record
         $m = new QueryLogManager();
         $result = $m->create(QueryLogFaker::make()->parameters());
