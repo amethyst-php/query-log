@@ -34,6 +34,20 @@ class QueryLogServiceProvider extends CommonServiceProvider
 
             $schedule = $this->app->make(Schedule::class);
             $schedule->command('amethyst:query-log:clean')->daily();
+
+            if (Config::get('queue.default') !== 'sync') {
+                Event::listen(\Illuminate\Queue\Events\JobProcessing::class, function ($event) {
+                    $this->app->get('amethyst.query-logger')->boot();
+                });
+
+                Event::listen(\Illuminate\Queue\Events\JobFailed::class, function ($event) {
+                    $this->app->get('amethyst.query-logger')->terminate();
+                });
+
+                Event::listen(\Illuminate\Queue\Events\JobProcessed::class, function ($event) {
+                    $this->app->get('amethyst.query-logger')->terminate();
+                });
+            }
         }
     }
 

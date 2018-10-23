@@ -22,7 +22,8 @@ class QueryLogger
      */
     public function boot()
     {
-        return $this->queryLogs = [];
+        $this->shouldLog = true;
+        $this->queryLogs = [];
     }
 
     /**
