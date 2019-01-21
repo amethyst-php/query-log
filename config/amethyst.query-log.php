@@ -35,11 +35,11 @@ return [
     'http' => [
         'admin' => [
             'query-log' => [
-                'enabled'     => true,
-                'controller'  => Railken\Amethyst\Http\Controllers\Admin\QueryLogsController::class,
-                'router'      => [
-                    'as'        => 'query-log.',
-                    'prefix'    => '/query-logs',
+                'enabled'    => true,
+                'controller' => Railken\Amethyst\Http\Controllers\Admin\QueryLogsController::class,
+                'router'     => [
+                    'as'     => 'query-log.',
+                    'prefix' => '/query-logs',
                 ],
             ],
         ],
