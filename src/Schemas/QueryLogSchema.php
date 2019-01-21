@@ -16,9 +16,12 @@ class QueryLogSchema extends Schema
     {
         return [
             Attributes\IdAttribute::make(),
-            Attributes\ObjectAttribute::make('sql'),
-            Attributes\NumberAttribute::make('time'),
-            Attributes\TextAttribute::make('group'),
+            Attributes\ObjectAttribute::make('sql')
+                ->setRequired(true),
+            Attributes\NumberAttribute::make('time')
+                ->setRequired(true),
+            Attributes\TextAttribute::make('group')
+                ->setRequired(true),
             Attributes\CreatedAtAttribute::make(),
             Attributes\UpdatedAtAttribute::make(),
         ];
