@@ -25,9 +25,9 @@ class QueryLogTest extends BaseTest
     protected $group = 'admin';
 
     /**
-     * Base path config.
+     * Route name.
      *
      * @var string
      */
-    protected $config = 'amethyst.query-log.http.admin.query-log';
+    protected $route = 'admin.query-log';
 }
