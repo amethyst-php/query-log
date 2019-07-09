@@ -1,10 +1,10 @@
 <?php
 
-namespace Railken\Amethyst\Tests\Http\Admin;
+namespace Amethyst\Tests\Http\Admin;
 
-use Railken\Amethyst\Api\Support\Testing\TestableBaseTrait;
-use Railken\Amethyst\Fakers\QueryLogFaker;
-use Railken\Amethyst\Tests\BaseTest;
+use Amethyst\Api\Support\Testing\TestableBaseTrait;
+use Amethyst\Fakers\QueryLogFaker;
+use Amethyst\Tests\BaseTest;
 
 class QueryLogTest extends BaseTest
 {

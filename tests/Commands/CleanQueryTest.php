@@ -1,10 +1,10 @@
 <?php
 
-namespace Railken\Amethyst\Tests\Commands;
+namespace Amethyst\Tests\Commands;
 
-use Railken\Amethyst\Fakers\QueryLogFaker;
-use Railken\Amethyst\Managers\QueryLogManager;
-use Railken\Amethyst\Tests\BaseTest;
+use Amethyst\Fakers\QueryLogFaker;
+use Amethyst\Managers\QueryLogManager;
+use Amethyst\Tests\BaseTest;
 
 class CleanQueryTest extends BaseTest
 {

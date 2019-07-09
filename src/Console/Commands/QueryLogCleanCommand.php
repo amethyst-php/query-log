@@ -1,10 +1,10 @@
 <?php
 
-namespace Railken\Amethyst\Console\Commands;
+namespace Amethyst\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Config;
-use Railken\Amethyst\Managers\QueryLogManager;
+use Amethyst\Managers\QueryLogManager;
 
 class QueryLogCleanCommand extends Command
 {

@@ -13,14 +13,14 @@ return [
         'query-log' => [
             'table'      => 'amethyst_query_logs',
             'comment'    => 'Query Log',
-            'model'      => Railken\Amethyst\Models\QueryLog::class,
-            'schema'     => Railken\Amethyst\Schemas\QueryLogSchema::class,
-            'repository' => Railken\Amethyst\Repositories\QueryLogRepository::class,
-            'serializer' => Railken\Amethyst\Serializers\QueryLogSerializer::class,
-            'validator'  => Railken\Amethyst\Validators\QueryLogValidator::class,
-            'authorizer' => Railken\Amethyst\Authorizers\QueryLogAuthorizer::class,
-            'faker'      => Railken\Amethyst\Fakers\QueryLogFaker::class,
-            'manager'    => Railken\Amethyst\Managers\QueryLogManager::class,
+            'model'      => Amethyst\Models\QueryLog::class,
+            'schema'     => Amethyst\Schemas\QueryLogSchema::class,
+            'repository' => Amethyst\Repositories\QueryLogRepository::class,
+            'serializer' => Amethyst\Serializers\QueryLogSerializer::class,
+            'validator'  => Amethyst\Validators\QueryLogValidator::class,
+            'authorizer' => Amethyst\Authorizers\QueryLogAuthorizer::class,
+            'faker'      => Amethyst\Fakers\QueryLogFaker::class,
+            'manager'    => Amethyst\Managers\QueryLogManager::class,
         ],
     ],
 
@@ -36,7 +36,7 @@ return [
         'admin' => [
             'query-log' => [
                 'enabled'    => true,
-                'controller' => Railken\Amethyst\Http\Controllers\Admin\QueryLogsController::class,
+                'controller' => Amethyst\Http\Controllers\Admin\QueryLogsController::class,
                 'router'     => [
                     'as'     => 'query-log.',
                     'prefix' => '/query-logs',

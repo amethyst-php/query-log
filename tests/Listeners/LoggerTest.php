@@ -1,9 +1,9 @@
 <?php
 
-namespace Railken\Amethyst\Tests\Listeners;
+namespace Amethyst\Tests\Listeners;
 
-use Railken\Amethyst\Managers\QueryLogManager;
-use Railken\Amethyst\Tests\BaseTest;
+use Amethyst\Managers\QueryLogManager;
+use Amethyst\Tests\BaseTest;
 
 class LoggerTest extends BaseTest
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Railken\Amethyst\Services;
+namespace Amethyst\Services;
 
 use Illuminate\Support\Facades\Config;
-use Railken\Amethyst\Managers\QueryLogManager;
+use Amethyst\Managers\QueryLogManager;
 
 class QueryLogger
 {
