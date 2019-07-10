@@ -2,8 +2,8 @@
 
 namespace Amethyst\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Amethyst\Common\ConfigurableModel;
+use Illuminate\Database\Eloquent\Model;
 use Railken\Lem\Contracts\EntityContract;
 
 class QueryLog extends Model implements EntityContract

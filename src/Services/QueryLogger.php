@@ -2,8 +2,8 @@
 
 namespace Amethyst\Services;
 
-use Illuminate\Support\Facades\Config;
 use Amethyst\Managers\QueryLogManager;
+use Illuminate\Support\Facades\Config;
 
 class QueryLogger
 {

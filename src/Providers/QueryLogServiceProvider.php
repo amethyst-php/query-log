@@ -2,13 +2,13 @@
 
 namespace Amethyst\Providers;
 
+use Amethyst\Common\CommonServiceProvider;
+use Amethyst\Console\Commands\QueryLogCleanCommand;
+use Amethyst\Services\QueryLogger;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Schema;
-use Amethyst\Common\CommonServiceProvider;
-use Amethyst\Console\Commands\QueryLogCleanCommand;
-use Amethyst\Services\QueryLogger;
 
 class QueryLogServiceProvider extends CommonServiceProvider
 {

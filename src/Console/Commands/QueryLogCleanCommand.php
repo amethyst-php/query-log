@@ -2,9 +2,9 @@
 
 namespace Amethyst\Console\Commands;
 
+use Amethyst\Managers\QueryLogManager;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Config;
-use Amethyst\Managers\QueryLogManager;
 
 class QueryLogCleanCommand extends Command
 {
