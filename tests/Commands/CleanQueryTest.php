@@ -20,7 +20,10 @@ class CleanQueryTest extends BaseTest
         $resource->created_at = (new \DateTime())->modify('-11 days');
         $resource->save();
 
-        $this->assertEquals($resource->id, $m->getRepository()->findOneById($resource->id)->id);
+        /** @var \Amethyst\Models\QueryLog */
+        $rx = $m->getRepository()->findOneById($resource->id);
+
+        $this->assertEquals($resource->id, $rx->id);
 
         $this->artisan('amethyst:query-log:clean');
 

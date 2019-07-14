@@ -23,32 +23,34 @@ class QueryLogServiceProvider extends CommonServiceProvider
 
         $this->app->get('amethyst.query-logger')->boot();
 
-        if (Schema::hasTable(Config::get('amethyst.query-log.data.query-log.table'))) {
-            Event::listen(\Illuminate\Database\Events\QueryExecuted::class, function ($event) {
-                $this->app->get('amethyst.query-logger')->handleEvent($event);
-            });
-
-            $this->app->terminating(function () {
-                $this->app->get('amethyst.query-logger')->terminate();
-            });
-
-            $schedule = $this->app->make(Schedule::class);
-            $schedule->command('amethyst:query-log:clean')->daily();
-
-            if (Config::get('queue.default') !== 'sync') {
-                Event::listen(\Illuminate\Queue\Events\JobProcessing::class, function ($event) {
-                    $this->app->get('amethyst.query-logger')->boot();
+        $this->app->booting(function () {
+            if (Schema::hasTable(Config::get('amethyst.query-log.data.query-log.table'))) {
+                Event::listen(\Illuminate\Database\Events\QueryExecuted::class, function ($event) {
+                    $this->app->get('amethyst.query-logger')->handleEvent($event);
                 });
 
-                Event::listen(\Illuminate\Queue\Events\JobFailed::class, function ($event) {
+                $this->app->terminating(function () {
                     $this->app->get('amethyst.query-logger')->terminate();
                 });
 
-                Event::listen(\Illuminate\Queue\Events\JobProcessed::class, function ($event) {
-                    $this->app->get('amethyst.query-logger')->terminate();
-                });
+                $schedule = $this->app->make(Schedule::class);
+                $schedule->command('amethyst:query-log:clean')->daily();
+
+                if (Config::get('queue.default') !== 'sync') {
+                    Event::listen(\Illuminate\Queue\Events\JobProcessing::class, function ($event) {
+                        $this->app->get('amethyst.query-logger')->boot();
+                    });
+
+                    Event::listen(\Illuminate\Queue\Events\JobFailed::class, function ($event) {
+                        $this->app->get('amethyst.query-logger')->terminate();
+                    });
+
+                    Event::listen(\Illuminate\Queue\Events\JobProcessed::class, function ($event) {
+                        $this->app->get('amethyst.query-logger')->terminate();
+                    });
+                }
             }
-        }
+        });
     }
 
     /**

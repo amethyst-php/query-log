@@ -53,7 +53,7 @@ class QueryLogger
         }
 
         $sql = str_replace(['%', '?'], ['%%', '%s'], $sql);
-        $sql = vsprintf($sql, $bindings);
+        $sql = vsprintf(strval($sql), $bindings);
 
         $this->queryLogs[] = (object) ['sql' => $sql, 'time' => $event->time];
     }
