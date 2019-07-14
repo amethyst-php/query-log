@@ -9,6 +9,7 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class QueryLogServiceProvider extends CommonServiceProvider
 {
@@ -23,7 +24,14 @@ class QueryLogServiceProvider extends CommonServiceProvider
 
         $this->app->get('amethyst.query-logger')->boot();
 
-        $this->app->booting(function () {
+        $this->app->booted(function () {
+            try {
+                DB::connection()->getPdo();
+            } catch (\Exception $e) {
+                return;
+            }
+
+
             if (Schema::hasTable(Config::get('amethyst.query-log.data.query-log.table'))) {
                 Event::listen(\Illuminate\Database\Events\QueryExecuted::class, function ($event) {
                     $this->app->get('amethyst.query-logger')->handleEvent($event);
