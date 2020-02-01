@@ -2,8 +2,8 @@
 
 namespace Amethyst\Providers;
 
-use Amethyst\Core\Providers\CommonServiceProvider;
 use Amethyst\Console\Commands\QueryLogCleanCommand;
+use Amethyst\Core\Providers\CommonServiceProvider;
 use Amethyst\Services\QueryLogger;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Facades\Config;
