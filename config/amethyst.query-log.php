@@ -26,27 +26,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Http configuration
-    |--------------------------------------------------------------------------
-    |
-    | Here you may configure the routes
-    |
-    */
-    'http' => [
-        'admin' => [
-            'query-log' => [
-                'enabled'    => true,
-                'controller' => Amethyst\Http\Controllers\Admin\QueryLogsController::class,
-                'router'     => [
-                    'as'     => 'query-log.',
-                    'prefix' => '/query-logs',
-                ],
-            ],
-        ],
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
     | Minium excecution time
     |--------------------------------------------------------------------------
     |
